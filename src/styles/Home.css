@@ -1,0 +1,20 @@
+.home-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .home {
+    flex: 1;
+    padding: 20px;
+  }
+  .home-header {
+    border-radius: 10px;
+    background-color: purple;
+    color: white;
+    padding: 10px;
+  }
+  .paragraph {
+    border-radius: 10px;
+    color: darkgray;
+    border: 1px solid lightgray;
+    padding: 10px;
+  }
