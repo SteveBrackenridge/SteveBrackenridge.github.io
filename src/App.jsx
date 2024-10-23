@@ -1,37 +1,24 @@
 import { useState } from 'react'
-import Menu from './Menu';
-import Project1 from './Project1.jsx';
-import Section01 from './Project1/Section01.jsx';
-import Section02 from './Project1/Section02.jsx';
-import Section03 from './Project1/Section03.jsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
-import Home from './Home';
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'
+import Login from './components/Login'
+import Logout from './components/Logout'
+import Profile from './components/Profile'
+import Landed from './components/Landed'
 
 function App() {
-  const [activeMenuItem, setActiveMenuItem] = useState(null);
-
-  const handleMenuClick = (path) => {
-    setActiveMenuItem(path);
-  };
+  
+  const { isAuthenticated } = useAuth0();
 
   return (
-    <Router>
-      <div className="App">
-        <header>
-          <h1>Wired Attentive Synapse Collection </h1>
-          <Menu onItemClick={handleMenuClick} />
-        </header>
-        <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Project1" element={<Project1 />} />
-        <Route path="/Project1/Section01" element={<Section01 />} />
-        <Route path="/Project1/Section02" element={<Section02 />} />
-        <Route path="/Project1/Section03" element={<Section03 />} />
-        </Routes>
-      </div>
-    </Router>
+    <>
+      {isAuthenticated ? <Landed /> : <Login />}
+      <Logout />
+      <Profile />
+    </>
   );
-}
+};
 
 export default App
