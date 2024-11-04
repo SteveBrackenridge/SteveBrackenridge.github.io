@@ -1,24 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'
-import Login from './components/Login'
-import Logout from './components/Logout'
-import Profile from './components/Profile'
-import Landed from './components/Landed'
+import React from 'react';
+import { Routes, Route, } from 'react-router-dom';
+import People from './components/People';
+import Places from './components/Places';
+import Problems from './components/Problems';
+
 
 function App() {
-  
-  const { isAuthenticated } = useAuth0();
-
   return (
-    <>
-      {isAuthenticated ? <Landed /> : <Login />}
-      <Logout />
-      <Profile />
-    </>
+    <div className="container">
+        <Routes>
+          <Route path="/" element={"Here the path begins. The end, if found, may be your own. - Liber Semita"}/>
+          <Route path="/people" element={<People />} />
+          <Route path="/places" element={<Places />} />
+          <Route path="/problems" element={<Problems />} />
+        </Routes>
+    </div>
   );
-};
+}
 
-export default App
+export default App;
